@@ -6,7 +6,7 @@ import UserOverlay from "@components/User/Overlay";
 import QueryParamHelper from "@helpers/queryParam";
 import UserService from "@services/user";
 import { useQueryParams } from "use-query-params";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { DEFAULT_PAGE_SIZE } from "@constants/pagination";
 import { DEBOUNCE_TIMEOUT_IN_MS } from "@constants/index";
@@ -17,8 +17,8 @@ const useQueryParamObservableKeys = ["_start", "name_like", "_sort"];
 let timeoutRef: NodeJS.Timeout | null = null;
 
 const DashboardPage = () => {
-  const { name_like } = useParams();
-  const [name, setName] = useState<IUser["name"]>(name_like || "");
+  const [searchParam] = useSearchParams();
+  const [name, setName] = useState<IUser["name"]>(searchParam.get("name_like") || "");
   const [users, setUsers] = useState<Array<IUser>>([]);
   const [usersCount, setUsersCount] = useState<number>();
   const [loading, setLoading] = useState(true);
