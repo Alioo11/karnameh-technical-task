@@ -21,8 +21,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@utils/*": ["./src/utils/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@helpers/*": ["./src/helpers/*"],
+      "@services/*": ["./src/services/*"],
       "@_types/*": ["./src/types/*"],
       "@components/*": ["./src/components/*"],
       "@constants/*": ["./src/constants/*"],
