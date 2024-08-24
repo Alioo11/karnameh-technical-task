@@ -5,7 +5,6 @@ import UserTable from "@components/User/Table";
 import UserOverlay from "@components/User/Overlay";
 import QueryParamHelper from "@helpers/queryParam";
 import UserService from "@services/user";
-import useToggle from "@hooks/useToggle";
 import { useQueryParams } from "use-query-params";
 import { useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -22,13 +21,13 @@ const DashboardPage = () => {
   const [name, setName] = useState<IUser["name"]>(name_like || "");
   const [users, setUsers] = useState<Array<IUser>>([]);
   const [usersCount, setUsersCount] = useState<number>();
-  const [loading, toggleLoading] = useToggle();
+  const [loading, setLoading] = useState(true);
   const [selectedUserId, setSelectedUserId] = useState<IUser["id"] | null>(null);
   const [queryParams, setQueryParams] = useQueryParams<IUserPartialQueryParams>(useQueryParamObservableKeys);
 
   const handleFetchUsersData = async () => {
     try {
-      toggleLoading();
+      setLoading(true);
       const query = { ...queryParams };
       query._limit = DEFAULT_PAGE_SIZE;
       const users = await UserService.list(query);
@@ -38,7 +37,7 @@ const DashboardPage = () => {
       console.error(error);
       toast.error("failed to fetch users data!", { position: "top-right" });
     } finally {
-      toggleLoading();
+      setLoading(false);
     }
   };
 
