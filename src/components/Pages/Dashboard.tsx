@@ -55,7 +55,7 @@ const DashboardPage = () => {
 
   useEffect(() => {
     timeoutRef = setTimeout(() => {
-      setQueryParams({ name_like: name || undefined });
+      setQueryParams({ name_like: name || undefined, _start: undefined });
     }, DEBOUNCE_TIMEOUT_IN_MS);
 
     return () => {
