@@ -8,5 +8,5 @@ this project is implemented according to [this](https://mail.google.com/mail/u/0
 - Start the development server `npm start`
 
 
-you can also view a live version of app at [karnameh-technical-tak](https://karnameh-technical-task.darkube.app/)
+you can also view a live version of app at [karnameh-technical-task](https://karnameh-technical-task.darkube.app/)
 
